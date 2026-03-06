@@ -8,7 +8,11 @@ This track explores whether AI agents can enable patient access to health data p
 
 Mikael Rinnetmaki is interested in exploring whether this approach could be replicated in Finland with the [Kanta patient portal](https://www.kanta.fi/).
 
-## What to Bring
+## Goals
+
+- TBD
+
+## Prerequisites
 
 Attendees need to bring two things:
 
@@ -16,6 +20,14 @@ Attendees need to bring two things:
 2. **An AI tool** to which you have a license
 
 Everything else should be possible to do at the hackathon.
+
+## Tasks
+
+- TBD
+
+## Expected Outcomes
+
+- TBD
 
 ## Resources
 
