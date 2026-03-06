@@ -16,6 +16,9 @@ General introduction to the hackathon:
 
 - Q&A session - bring your questions
 - E-hm FHIR initiatives (TBD)
+- **Homework for participants**:
+  - Continue working on your track preparation
+  - Come to the hackathon ready to hit the ground running
 
 ## Hackathon - May 8
 

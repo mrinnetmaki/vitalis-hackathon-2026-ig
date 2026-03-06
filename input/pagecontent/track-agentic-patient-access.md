@@ -4,7 +4,7 @@
 
 ## Overview
 
-This track explores whether AI agents can enable patient access to health data portals that do not natively support FHIR. The concept builds on what the Danes have done with the [Dhroxy](https://github.com/orgs/c3po-initiative/repositories) project under the c3po initiative.
+This track explores whether AI agents can enable patient access to health data portals that do not natively support FHIR. The approach is inspired by the Danish [Dhroxy](https://github.com/orgs/c3po-initiative/repositories) project, developed as part of the [c3po initiative](https://github.com/orgs/c3po-initiative/repositories), which uses AI agents to provide FHIR-based access to existing patient portals.
 
 Mikael Rinnetmaki is interested in exploring whether this approach could be replicated in Finland with the [Kanta patient portal](https://www.kanta.fi/).
 

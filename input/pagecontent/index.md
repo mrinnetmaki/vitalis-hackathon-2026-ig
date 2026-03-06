@@ -15,7 +15,7 @@ The hackathon features three tracks:
 Two preparatory meetings will be held before the hackathon:
 
 - **Meeting 1 - April 15**: General introduction, track overview, and homework
-- **Webinar 2 - April 22**: Q&A session
+- **Webinar 2 - April 22**: Q&A session and homework
 
 See the [Preparation](preparation.html) page for details.
 
