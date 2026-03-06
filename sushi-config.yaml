@@ -88,10 +88,9 @@ pages:
 menu:
   Home: index.html
   Preparation: preparation.html
-  Tracks:
-    Agentic Patient Access: track-agentic-patient-access.html
-    Terminology: track-terminology.html
-    Comparing Profiles: track-comparing-profiles.html
+  Agentic Patient Access: track-agentic-patient-access.html
+  Terminology: track-terminology.html
+  Comparing Profiles: track-comparing-profiles.html
 
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │
