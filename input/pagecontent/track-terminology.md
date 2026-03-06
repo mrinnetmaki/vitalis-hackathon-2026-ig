@@ -4,7 +4,7 @@
 
 ## Overview
 
-This track explores how applications can utilize the Nordic FHIR terminology server, with a focus on translations of codes and mapping legacy terminologies to FHIR.
+This track explores how applications can utilize the [Nordic FHIR terminology server](https://tx-nordics.fhir.org/fhir/r4/), with a focus on translations of codes and mapping legacy terminologies to FHIR.
 
 ## Topics
 
