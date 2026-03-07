@@ -1,14 +1,19 @@
 # Vitalis Hackathon 2026
 
-Welcome to the Vitalis Hackathon 2026 - a FHIR hackathon held in **Gothenburg, Sweden** on **May 8, 2026**.
+Welcome to the Vitalis Hackathon 2026 - a health data hackathon held in **Gothenburg, Sweden** on **May 8, 2026**.
+
+This hackathon is part of the [Nordic Health Data Hackathons](https://fhir.fi/hackathon/) series.
 
 ## Tracks
 
-The hackathon features three tracks:
+The [call for proposed tracks](https://chat.fhir.org/#narrow/channel/194447-nordics/topic/Swedish.20Health.20Data.20Hackathon.20-.20Call.20For.20Proposals/with/575779004) is out.
+Please send your own ideas!
+
+We currently have three proposed tracks:
 
 1. **[Agentic Patient Access](track-agentic-patient-access.html)** - Led by Jens Villadsen
-2. **[Terminology](track-terminology.html)** - Led by Mikael Rinnetmaki
-3. **[Comparing National and EU Base Profiles](track-comparing-profiles.html)** - Led by Mikael Rinnetmaki
+2. **[Terminology](track-terminology.html)** - Led by Vadim Peretokin
+3. **[Comparing National and EU FHIR Base Profiles](track-comparing-profiles.html)** - Led by Mikael Rinnetmaki
 
 ## Preparation
 
@@ -23,7 +28,8 @@ See the [Preparation](preparation.html) page for details.
 
 - [HL7 Sweden](https://hl7.se/)
 - [HL7 FHIR R4](https://hl7.org/fhir/R4/)
-- [FHIR Shorthand (FSH)](https://build.fhir.org/ig/HL7/fhir-shorthand/)
+- [FHIR Shorthand (FSH)](https://hl7.org/fhir/uv/shorthand/)
+- [The Nordic FHIR terminology server](https://tx-nordics.fhir.org/fhir)
 
 ## Feedback & Support
 
