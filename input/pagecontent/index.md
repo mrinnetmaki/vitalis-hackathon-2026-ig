@@ -17,6 +17,16 @@ We currently have three proposed tracks:
 2. **[Terminology](track-terminology.html)** - Led by Vadim Peretokin
 3. **[Comparing National and EU FHIR Base Profiles](track-comparing-profiles.html)** - Led by Mikael Rinnetmaki
 
+## Schedule
+
+| Time | Activity |
+|---|---|
+| 9:00 - 9:30 | Welcome and track introductions |
+| 9:30 - 12:00 | Hacking |
+| 12:00 - 13:00 | Working lunch (hacking continues) |
+| 13:00 - 14:00 | Hacking |
+| 14:00 - 15:00 | Track presentations and wrap-up |
+
 ## Preparation
 
 Two preparatory meetings will be held before the hackathon:
