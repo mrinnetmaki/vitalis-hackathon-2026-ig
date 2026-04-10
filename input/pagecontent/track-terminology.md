@@ -159,7 +159,7 @@ Bring your own problem, or pick from these:
 - CSIRO Shrimp browser - [Shrimp](https://ontoserver.csiro.au/shrimp/) is a free SNOMED CT browser that works with any FHIR terminology server. Point it at the Nordic TX server by entering `https://tx-nordics.fhir.org/fhir/r4` in the endpoint field (top right), or use this direct link:
 
     [https://ontoserver.csiro.au/shrimp/?fhir=https://tx-nordics.fhir.org/fhir/r4](https://ontoserver.csiro.au/shrimp/?fhir=https://tx-nordics.fhir.org/fhir/r4)
-- Build an MCP tool for the TX server - wrap the TX server's FHIR API as an [MCP server](https://modelcontextprotocol.io/) so any AI agent can query it natively. This could be a reusable artifact from the hackathon
+- Connect an AI agent to the TX server via MCP - [fhir-mcp](https://github.com/xSoVx/fhir-mcp) is an existing MCP server that supports `terminology.lookup`, `terminology.expand`, and `terminology.translate`. Point it at the Nordic TX server by setting `TERMINOLOGY_BASE_URL=https://tx-nordics.fhir.org/fhir/r4` and use it from Claude Code or Cursor to look up codes conversationally
 - Validation pipeline - build a round-trip workflow where an AI proposes codes, the TX server validates them, and a human reviews the discrepancies
 
 ## Expected Outcomes
