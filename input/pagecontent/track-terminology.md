@@ -6,7 +6,7 @@ Track lead: Vadim Peretokin
 
 This track explores how applications can utilize the [Nordic FHIR terminology server](https://tx-nordics.fhir.org/fhir/r4/) (tx-nordics) for authoring FHIR content, and how AI agents can serve as terminology co-pilots - helping find codes, create mappings, and validate bindings.
 
-No prior experience with terminology servers or AI agents is required. The track is structured as a progression from guided exercises to open hacking, so you can join at whatever level suits you.
+No prior experience with terminology servers or AI agents is required. The track is structured as a progression from guided exercises to open hacking, so you can join at whatever level suits you. Use of LLMs (ChatGPT, Claude, etc.) is welcomed and encouraged, but not necessary (for part 1).
 
 ## Goals
 
@@ -18,14 +18,15 @@ No prior experience with terminology servers or AI agents is required. The track
 ## Prerequisites
 
 - A laptop with internet access
-- (Optional) An AI coding tool you have a license for (e.g. [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview), [Cursor](https://www.cursor.com/), [GitHub Copilot](https://github.com/features/copilot)) - for the AI exercises. We'll help you set up if needed
+- [Postman](https://www.postman.com/downloads/) client for part 1 (free)
+- An AI coding tool (e.g. [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview), [Cursor](https://www.cursor.com/), [GitHub Copilot](https://github.com/features/copilot)) - for the AI exercises. We'll help you set up if needed. This is needed for part 2 (requires a paid license)
 - No prior terminology server or AI agent experience required
 
 ## Exercises
 
 The exercises below are self-paced - start wherever you're comfortable and work through them at your own speed. The track lead will be walking around to help.
 
-### Part 1: TX Server Basics
+### Part 1: TX server basics
 
 These exercises introduce the core FHIR terminology operations. You'll work directly with the [Nordic TX server](https://tx-nordics.fhir.org/fhir/r4/) using a REST client, browser, or curl.
 
@@ -35,7 +36,7 @@ These exercises introduce the core FHIR terminology operations. You'll work dire
     GET https://tx-nordics.fhir.org/fhir/r4/CodeSystem/$lookup?system=http://snomed.info/sct&version=http://snomed.info/sct/45991000052106/version/20251130&code=73211009&property=designation
     ```
 
-    This looks up "Diabetes mellitus" (73211009) using the Swedish SNOMED CT edition and returns `sv: diabetes` alongside the English designations. Try the Norwegian edition (`51000202101`) or the Danish edition (`554471000005108`) by replacing the module ID in the version parameter.
+    This looks up "Diabetes mellitus" (73211009) using the Swedish SNOMED CT edition and returns `sv: diabetes` alongside the English designations. Try the Norwegian edition (module `51000202101`, version `20251215`) or the Danish edition (module `554471000005108`, version `20250930`) by replacing the module ID and version date in the version parameter.
 
 2. `$validate-code` - Check whether a code is valid in a code system. Try with a valid code, then an invalid one - what does the server return?
 
@@ -50,6 +51,12 @@ These exercises introduce the core FHIR terminology operations. You'll work dire
     ```
 
     This returns `"result": false` with a message explaining the code is unknown.
+
+    **Try it yourself:**
+
+    - What happens if you also send a `display` parameter with the wrong display name for code `73211009`? Does the server catch it? (hint: add `&display=Hypertension` to the valid code query)
+    - Can you validate that a code belongs to a specific value set instead of just the code system? Try using the `ValueSet/$validate-code` endpoint with the diabetes descendants value set from exercise 3 below. Does `44054006` (Type 2 diabetes mellitus) belong? What about `38341003` (Hypertension)?
+    - Try validating an NPU code. The system URL for NPU is `http://npu-terminology.org` - can you check if `NPU03835` (HbA1c) is valid?
 
 <details>
 <summary>More exercises: $expand and $translate</summary>
@@ -67,6 +74,13 @@ These exercises introduce the core FHIR terminology operations. You'll work dire
     ```
 
     This narrows it down to 16 matches containing "type 2".
+
+    **Try it yourself:**
+
+    - Add `&includeDesignations=true` to the expand query. What extra information do you get back? Can you spot translations in your language?
+    - Try adding `&displayLanguage=sv` (or `no`, `da`) to the query. How does the output change?
+    - Can you expand a different hierarchy? Try replacing `73211009` (Diabetes mellitus) with `38341003` (Hypertension) to find all types of hypertension. How many are there?
+    - What happens if you use `&offset=5&count=5` - can you paginate through results?
 
 4. `$translate` - Use a ConceptMap to translate a code between systems. First, upload this sample ConceptMap that maps a few diabetes SNOMED codes to ICD-10:
 
@@ -136,18 +150,41 @@ These exercises introduce the core FHIR terminology operations. You'll work dire
 
     This should return E11 (Type 2 diabetes mellitus).
 
+5. Build your own ConceptMap - Now create a [ConceptMap](https://hl7.org/fhir/R4/conceptmap.html) from scratch. Map these SNOMED CT codes to ICD-10:
+
+    | SNOMED CT code | Display |
+    |---|---|
+    | 38341003 | Hypertensive disorder |
+    | 48146000 | Diastolic hypertension |
+    | 56218007 | Systolic hypertension |
+
+    Figure out the appropriate ICD-10 codes for each, use the sample ConceptMap from exercise 4 as a template, and upload it with a PUT. Test it with `$translate` - does the server return the ICD-10 code you expected?
+
 </details>
 
-### Part 2: AI Agents as Terminology Co-Pilots
+### Part 2: AI Agents as terminology assistants
 
 These exercises introduce AI agents that can query terminology servers. If you've never used an AI coding agent before, this is a gentle starting point.
 
 1. "Find me a code" - Give your AI agent a clinical concept in natural language (e.g. "fasting blood glucose", "type 2 diabetes", "left hip replacement") and ask it to find the appropriate SNOMED CT or LOINC code. Then validate the result against the TX server using `$validate-code`. Did the AI get it right, or did it hallucinate?
-2. AI-assisted ConceptMap - Take a small list of legacy codes (we'll provide samples, or bring your own) and ask the AI agent to propose SNOMED CT mappings for each. Validate the proposals against the TX server. How many were correct?
-3. AI-assisted FSH authoring - Ask the AI agent to write a FHIR profile in FSH with terminology bindings - for example, a simple Observation profile for blood pressure with the right LOINC codes and SNOMED CT value set bindings. Validate the output with the IG publisher using tx-nordics as the terminology server.
-4. Compare AI vs TX server - For a set of codes, compare what the AI suggests as the display name vs what the TX server returns from `$lookup`. Where do they diverge? This is a practical lesson in why you should validate AI-generated terminology.
+   1. Now, each the AI agent to look up codes by giving it the sample URL from Part 1. Ask it to look up codes again. Does it do a better job now?
+2. AI-assisted ConceptMap - Take the sample legacy codes below (or bring your own) and ask the AI agent to propose SNOMED CT mappings for each. Validate the proposals against the TX server with `$validate-code`. How many were correct?
 
-### Part 3: Open Hacking
+    | Legacy code | Description |
+    |---|---|
+    | LAB-001 | Fasting blood glucose |
+    | LAB-002 | HbA1c |
+    | LAB-003 | Total cholesterol |
+    | DX-101 | High blood pressure |
+    | DX-102 | Adult-onset diabetes |
+    | DX-103 | Chest pain on exertion |
+    | DX-104 | Iron deficiency |
+    | PROC-201 | Total knee replacement, left |
+    | PROC-202 | Removal of gallbladder |
+    | PROC-203 | Insertion of cardiac pacemaker |
+3. Compare AI vs TX server - For a set of codes, compare what the AI suggests as the display name vs what the TX server returns from `$lookup`. Where do they diverge? This is a practical lesson in why you should validate AI-generated terminology.
+
+### Part 3: Open hacking
 
 Bring your own problem, or pick from these:
 
@@ -162,7 +199,7 @@ Bring your own problem, or pick from these:
 - Connect an AI agent to the TX server via MCP - [fhir-mcp](https://github.com/xSoVx/fhir-mcp) is an existing MCP server that supports `terminology.lookup`, `terminology.expand`, and `terminology.translate`. Point it at the Nordic TX server by setting `TERMINOLOGY_BASE_URL=https://tx-nordics.fhir.org/fhir/r4` and use it from Claude Code or Cursor to look up codes conversationally
 - Validation pipeline - build a round-trip workflow where an AI proposes codes, the TX server validates them, and a human reviews the discrepancies
 
-## Expected Outcomes
+## Expected outcomes
 
 - Participants understand how to use a FHIR terminology server for authoring (lookup, validate, expand, translate)
 - Participants have hands-on experience using AI agents to find and validate terminology
