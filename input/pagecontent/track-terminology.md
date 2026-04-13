@@ -162,6 +162,35 @@ These exercises introduce the core FHIR terminology operations. You'll work dire
 
 </details>
 
+### Part 1b: Authoring IGs with national terminology
+
+These exercises show how to use a national SNOMED CT edition when building a FHIR Implementation Guide. You'll write FSH, build the IG, and verify that the Nordic TX server was used automatically through the FHIR terminology ecosystem.
+
+1. Clone and build - Clone this hackathon IG and build it:
+
+    ```
+    git clone https://github.com/vadi2/vitalis-hackathon-2026-ig.git
+    cd vitalis-hackathon-2026-ig
+    ./_genonce.sh
+    ```
+
+    The build should succeed. The IG publisher uses `tx.fhir.org` by default, which knows how to route requests to national terminology servers like the Nordic TX server.
+
+2. Add a Swedish SNOMED code - Create a new FSH file (e.g. `input/fsh/diabetes-condition.fsh`) with an example Condition that uses a code from the Swedish SNOMED CT edition:
+
+    ```fsh
+    Instance: DiabetesExample
+    InstanceOf: Condition
+    Usage: #example
+    * subject = Reference(Patient/example)
+    * code = http://snomed.info/sct|http://snomed.info/sct/45991000052106#73211009 "Diabetes mellitus"
+    * clinicalStatus = http://terminology.hl7.org/CodeSystem/condition-clinical#active
+    ```
+
+    Note the version in the code system URI - `http://snomed.info/sct|http://snomed.info/sct/45991000052106` pins it to the Swedish edition.
+
+3. Build and check TX logs - Rebuild the IG with `./_genonce.sh`. After the build completes, open `output/qa-tx.html` in your browser. This shows every terminology request the IG publisher made. Can you find the request that validated your Swedish SNOMED code? Which server handled it - was it routed to the Nordic TX server?
+
 ### Part 2: AI Agents as terminology assistants
 
 These exercises introduce AI agents that can query terminology servers. If you've never used an AI coding agent before, this is a gentle starting point.
