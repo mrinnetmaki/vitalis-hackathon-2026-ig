@@ -22,7 +22,15 @@ Also, due to the EHDS regulation, standardization efforts in Europe are now of c
 
 ## Tasks
 
-- TBD
+- Let's discuss potential alternatives for checking profile compatibility.
+
+  - The IG publisher can do some comparisons. It is not trivial to see which changes matter.
+
+  - Repos [https://github.com/hl7-eu/coalesced](https://github.com/hl7-eu/coalesced), [https://github.com/fhir-fi/nordic-base](https://github.com/fhir-fi/nordic-base), and[multi-profile-validation](https://github.com/Sensotrend/multi-profile-validation) show approaches for comparing profiles.
+
+  - It could perhaps be possible to do the comparison fully programmatically. Read all profile definitions, generate sample resources that fulfil each requirement, validate against other profiles... This may be too ambitious for the hackathon?
+
+- Let's explore how Gazelle and any other EHDS online testing tools could help.
 
 ## Expected Outcomes
 
@@ -32,4 +40,7 @@ Also, due to the EHDS regulation, standardization efforts in Europe are now of c
 ## Resources
 
 - [FHIR Base Profiles in the Nordics](https://invitepeople.com/public/events/cceaf0ab1a/seminars/99491) session in Vitalis conference programme
+- [CoalescedImplementationGuide](https://github.com/hl7-eu/coalesced) repo for comparing EU base profiles
 - The [nordic-base](https://github.com/fhir-fi/nordic-base) FHIR implementation guide repo
+- [multi-profile-validation](https://github.com/Sensotrend/multi-profile-validation), an example repo demonstrating how profiles can be compared
+- [EHDS Gazelle Test Bed](https://ehds.gazelle-platform.net/)
