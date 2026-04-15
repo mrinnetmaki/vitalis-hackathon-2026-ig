@@ -4,6 +4,8 @@ Two preparatory webinars will be held before the hackathon on May 8.
 
 ## Webinar 1 - April 15
 
+[Recording](https://drive.google.com/file/d/1p19d8FE333ChPhYrkFXKfUDp6sCZLa8A/view?usp=sharing)
+
 General introduction to the hackathon:
 
 - **Date and venue**: May 8, Gothenburg, Sweden
