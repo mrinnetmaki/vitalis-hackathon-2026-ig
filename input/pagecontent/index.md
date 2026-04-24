@@ -27,7 +27,7 @@ We currently have three proposed tracks:
 | 13:00 - 14:00 | Hacking |
 | 14:00 - 15:00 | Track presentations and wrap-up |
 
-Bonus sessions running in parallel with hacking from 9:30:
+Bonus sessions running in parallel with hacking from 9:30 (15 minutes each):
 
 - **eHM** presenting their work
 - **UMI** track
