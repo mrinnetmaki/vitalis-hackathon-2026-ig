@@ -4,6 +4,8 @@ Welcome to the Vitalis Hackathon 2026 - a health data hackathon organized by [HL
 
 **[Sign up for the hackathon here!](https://forms.gle/VtHrSBQib1oaBeEC8)**
 
+See the [Vitalis Hackathon 2026 flyer (PDF)](Vitalis-Hackathon-2026.pdf) for a printable overview.
+
 This hackathon is part of the [Nordic Health Data Hackathons](https://fhir.fi/hackathon/) series.
 
 ## Tracks
