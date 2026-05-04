@@ -4,6 +4,8 @@ Welcome to the Vitalis Hackathon 2026 - a health data hackathon organized by [HL
 
 **[Sign up for the hackathon here!](https://forms.gle/VtHrSBQib1oaBeEC8)**
 
+See the [Vitalis Hackathon 2026 flyer (PDF)](Vitalis-Hackathon-2026.pdf) for a printable overview.
+
 This hackathon is part of the [Nordic Health Data Hackathons](https://fhir.fi/hackathon/) series.
 
 ## Tracks
@@ -22,16 +24,22 @@ We currently have three proposed tracks:
 | Time | Activity |
 |---|---|
 | 9:00 - 9:30 | Welcome and track introductions |
-| 9:30 - 12:00 | Hacking |
+| 9:30 - 12:00 | Hacking (with bonus sessions, see below) |
 | 12:00 - 13:00 | Working lunch (hacking continues) |
 | 13:00 - 14:00 | Hacking |
 | 14:00 - 15:00 | Track presentations and wrap-up |
+
+Bonus sessions running in parallel with hacking from 9:30 (15 minutes each):
+
+- **eHM** presenting their work
+- **UMI** track
+- **IHE's Gazelle** tool
 
 ## Preparation
 
 Two preparatory meetings will be held before the hackathon:
 
-- **Webinar 1 - April 15, 9-10am**: General introduction, track overview, and homework - [Join meeting](https://meet.google.com/mim-muhf-tvk)
+- **Webinar 1 - April 15, 9-10am**: General introduction, track overview, and homework - [Join meeting](https://meet.google.com/mim-muhf-tvk) - [Recording](https://drive.google.com/file/d/1p19d8FE333ChPhYrkFXKfUDp6sCZLa8A/view?usp=sharing)
 - **Webinar 2 - April 22, 9-10am**: Q&A session and homework - [Join meeting](https://meet.google.com/edo-vtge-gee)
 
 See the [Preparation](preparation.html) page for details.
