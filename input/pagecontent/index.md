@@ -32,7 +32,7 @@ We currently have three proposed tracks:
 Bonus sessions running in parallel with hacking from 9:30 (15 minutes each):
 
 - **eHM** presenting their work
-- **UMI** track
+- **UMI** track - see [the presentation](UMI-on-FHIR.pptx)
 - **IHE's Gazelle** tool
 
 ## Preparation
