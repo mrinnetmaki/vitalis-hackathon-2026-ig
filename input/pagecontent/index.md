@@ -48,7 +48,7 @@ See the [Preparation](preparation.html) page for details.
 
 The hackathon is held at the [Swedish Exhibition & Congress Centre (Svenska Mässan)](https://en.vitalis.nu/plan-your-visit/find-us/), room R17 on Level 2, located at Mässans gata, Gothenburg. See the [Vitalis venue map (PDF)](https://vitalis.nu/uploads/sites/21/2026/03/Vitalis-2026_hallkarta.pdf) for details.
 
-Enter via Entrance 5 (main entrance at Mässans gata, facing Korsvägen) and take the escalator up to Level 2. Follow signs to the R conference rooms - R17 is at the end of the corridor.
+Entrance 5 is closed, so enter via the Upper House Entrance further down Mässans gata, head up the stairs you see, then turn right and walk down the hallway to R17.
 
 ## Useful Links
 
