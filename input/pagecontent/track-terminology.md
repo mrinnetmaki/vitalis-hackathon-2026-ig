@@ -223,8 +223,10 @@ These exercises show how to use a national SNOMED CT edition when building a FHI
 
 These exercises introduce AI agents that can query terminology servers. If you've never used an AI coding agent before, this is a gentle starting point.
 
-1. "Find me a code" - Give your AI agent a clinical concept in natural language (e.g. "fasting blood glucose", "type 2 diabetes", "left hip replacement") and ask it to find the appropriate SNOMED CT or LOINC code. Then validate the result against the TX server using `$validate-code`. Did the AI get it right, or did it hallucinate?
-   1. Now, each the AI agent to look up codes by giving it the sample URL from Part 1. Ask it to look up codes again. Does it do a better job now?
+1. "Find me a code" - Give your AI agent a clinical concept in natural language (e.g. "fasting blood glucose", "type 2 diabetes", "left hip replacement") and ask it to find the appropriate SNOMED CT or NPU code. Then validate the result against the TX server using `$validate-code`. Did the AI get it right, or did it hallucinate?
+   1. Now, ask the AI agent to look up codes by giving it the sample URL from Part 1. Ask it to look up codes again. Does it do a better job now?
+
+   Note: tx-nordics indexes SNOMED CT (international + Nordic editions) and NPU; it does not currently host LOINC, so LOINC codes won't validate against this server.
 2. AI-assisted ConceptMap - Take the sample legacy codes below (or bring your own) and ask the AI agent to propose SNOMED CT mappings for each. Validate the proposals against the TX server with `$validate-code`. How many were correct?
 
     | Legacy code | Description |
