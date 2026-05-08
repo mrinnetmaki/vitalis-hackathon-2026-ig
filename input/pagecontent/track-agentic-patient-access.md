@@ -65,6 +65,7 @@ Everything else should be possible to do at the hackathon.
 3. **Build** — Use an AI coding agent to scaffold a lightweight proxy server (any language/framework) that authenticates against the target portal and re-exposes the data as FHIR R4 resources.
 4. **Validate** — Run the FHIR responses through the [FHIR validator](https://validator.fhir.org) or a local validator to check conformance.
 5. **Document** — Write a short README that explains the authentication flow, the endpoint mapping, and any known limitations.
+6. **API Documentation** - Consider using https://github.com/mikkelkrogsholm/api-mapper
 
 ## Expected Outcomes
 
