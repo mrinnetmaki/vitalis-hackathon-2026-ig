@@ -91,72 +91,102 @@ Everything else should be possible to do at the hackathon.
 You are a senior healthcare integration engineer. Your task is to **analyze provided artifacts and produce a detailed implementation plan** for a FHIR R4 facade layer before writing any code.
 
 ## Inputs provided
-- One or more **HAR files** (browser network captures) that show the real HTTP traffic of the underlying proprietary API
+- One or more **HAR files** (browser network captures) showing real HTTP traffic from the underlying proprietary API
 - An **OpenAPI specification** describing the underlying API's endpoints, schemas, and authentication
 
-## Phase 1 — Analysis (do this first, output findings before planning)
+---
+
+## Phase 1 — Analysis (complete before any planning)
 
 ### HAR file analysis
 For each HAR file:
 1. Identify all unique API endpoints called (method + path)
-2. Extract request headers, authentication patterns (tokens, cookies, API keys)
-3. Document request/response payload shapes with example values
-4. Note pagination patterns, error response formats, and any undocumented behaviors not in the OpenAPI spec
-5. Flag any discrepancies between actual HAR traffic and what the OpenAPI spec documents
+2. Extract request headers and authentication patterns (tokens, cookies, API keys)
+   - **Note:** If the HAR contains login/auth flows (e.g. `/login`, `/oauth/token`, `/auth`), you may **skip detailed analysis of those flows** unless they reveal something structurally important about how session tokens are used downstream. Just note that auth exists and what credential type is passed on subsequent requests.
+3. Document request/response payload shapes with representative field names and value types
+4. Note pagination patterns, error response formats, and any behaviors not reflected in the OpenAPI spec
+5. Flag discrepancies between actual HAR traffic and the OpenAPI spec
 
 ### OpenAPI spec analysis
 1. List all available endpoints and operations
 2. Identify data models and their fields
-3. Note authentication/authorization schemes
-4. Identify any endpoints that appear unused in the HAR files
-
-## Phase 2 — FHIR Mapping Plan
-
-Map the underlying API's resources to FHIR R4 resources. For each mapping, specify:
-
-| Underlying resource (from HAR/OpenAPI) | FHIR R4 Resource | Mapping notes / gaps |
-|----------------------------------------|------------------|----------------------|
-| ...                                    | ...              | ...                  |
-
-For each FHIR resource you plan to expose:
-- Which underlying API calls are needed to populate it?
-- What data transformations are required?
-- What FHIR fields cannot be populated from available data (mark as `extension` or omit)?
-- What FHIR search parameters can be supported?
-
-## Phase 3 — Architecture Plan
-
-Propose a concrete architecture covering:
-
-1. **Tech stack** — recommend a language/framework appropriate for a FHIR facade (e.g. Node.js + HAPI FHIR, Python + Flask, Java Spring Boot, etc.) with justification
-2. **Layer breakdown**
-   - FHIR REST layer (handles incoming FHIR requests, validates, routes)
-   - Mapping/translation layer (FHIR ↔ proprietary model)
-   - Upstream client layer (calls the underlying API, handles auth + retries)
-3. **Authentication strategy** — how the facade will authenticate to the upstream API (based on HAR evidence) and how it will authenticate its own callers
-4. **Caching strategy** — where caching makes sense given the observed traffic patterns
-5. **Error handling** — how upstream errors map to FHIR OperationOutcome responses
-6. **Testing strategy** — unit, integration, and contract tests against FHIR conformance
-
-## Phase 4 — Implementation Roadmap
-
-Break the work into milestones:
-- Milestone 1: Project scaffold + upstream API client (auth working, raw calls passing)
-- Milestone 2: First FHIR resource end-to-end (suggest which one is simplest)
-- Milestone 3: Remaining FHIR resources
-- Milestone 4: Search parameter support
-- Milestone 5: Validation, error handling, conformance statement (`/metadata`)
-
-For each milestone list the files/modules that will be created.
-
-## Constraints & decisions to surface
-Before finishing the plan, explicitly flag:
-- Any ambiguities in the HAR/OpenAPI data that require a human decision
-- FHIR elements that are mandatory but unavailable from the source system
-- Security concerns observed in the HAR files (e.g. tokens in URLs, missing TLS, overly broad scopes)
-- Licensing or terms-of-service considerations if the underlying API is a third-party SaaS
+3. Note authentication/authorization schemes (summary only — implementation detail deferred)
+4. Flag endpoints that appear unused or absent in the HAR captures
 
 ---
 
-**Do not write implementation code yet.** Deliver only the analysis and plan. Wait for approval before proceeding to code generation.
+## Phase 2 — FHIR Resource Identification & Mapping
+
+**Infer the appropriate FHIR R4 resources from the HAR and OpenAPI data.** Do not assume a fixed resource set — let the underlying data model drive what FHIR resources make sense to expose.
+
+For each identified mapping:
+
+| Underlying resource (HAR/OpenAPI) | FHIR R4 Resource | Confidence | Mapping notes / gaps |
+|-----------------------------------|------------------|------------|----------------------|
+| ...                               | ...              | High/Med/Low | ...                |
+
+For each FHIR resource:
+- Which underlying API calls are needed to populate it?
+- What field-level transformations are required (renaming, type coercion, unit conversion, code system mapping)?
+- Which mandatory FHIR fields cannot be populated from available data? (mark for `extension`, stub value, or omission with justification)
+- Which FHIR search parameters (`_id`, `subject`, `date`, etc.) can be realistically supported?
+
+---
+
+## Phase 3 — Tech Stack Recommendation
+
+Based on the complexity, payload shapes, and patterns observed in the HAR/OpenAPI data, recommend the most appropriate tech stack for this facade. Consider:
+
+- **Ecosystem maturity** for FHIR (existing libraries, validators, terminology servers)
+- **Transformation complexity** — if mappings are heavy, prefer a language with strong data manipulation ergonomics
+- **Operational simplicity** — prefer something deployable as a single service without heavy infrastructure
+- **Team familiarity signals** — if the OpenAPI spec or HAR reveals tech clues (e.g. JSON conventions, versioning style), factor that in
+
+Provide a brief justification for your recommendation and name any key libraries (e.g. `fhir.js`, `fhirpy`, `HAPI FHIR`, `medplum`).
+
+---
+
+## Phase 4 — Architecture Plan
+
+Outline the facade's internal structure:
+
+1. **Layer breakdown**
+   - FHIR REST layer — handles incoming FHIR requests, routing, and basic validation
+   - Mapping/translation layer — bidirectional transforms between FHIR and proprietary models
+   - Upstream client layer — calls the underlying API; handles auth token injection, retries, and error normalization
+2. **Authentication strategy**
+   - How the facade authenticates *to* the upstream API (based on HAR evidence — token type, header name, refresh pattern)
+   - How the facade authenticates *its own callers* (recommend a sensible default; note this can be swapped out)
+   - Flag whether credential handling can be simplified or stubbed for an initial implementation
+3. **Caching strategy** — where caching adds value given observed traffic patterns
+4. **Error handling** — how upstream errors map to FHIR `OperationOutcome` responses
+5. **Capability statement** — what the `/metadata` endpoint will advertise
+
+---
+
+## Phase 5 — Implementation Roadmap
+
+Break work into ordered milestones. For each, list the modules/files to be created:
+
+- **Milestone 1:** Project scaffold + upstream API client (raw calls working, auth token injected)
+- **Milestone 2:** First FHIR resource end-to-end — pick the simplest/most complete mapping from Phase 2
+- **Milestone 3:** Remaining FHIR resources in priority order
+- **Milestone 4:** Search parameter support
+- **Milestone 5:** Validation, error normalization, `/metadata` conformance statement
+- **Milestone 6:** Tests — unit for mappers, integration against a FHIR validator, contract tests
+
+---
+
+## Flags & Decisions Required
+
+Before finishing the plan, surface:
+- **Ambiguities** in the HAR/OpenAPI that need a human decision before implementation can proceed
+- **Mandatory FHIR fields** that are unavailable from the source system and require a policy decision
+- **Security observations** from the HAR (tokens in query strings, missing headers, overly broad scopes)
+- **Scope recommendations** — if the HAR reveals the system is large, suggest a phased scope rather than boiling the ocean
+
+---
+
+**Do not write implementation code yet.**
+Deliver the full analysis and plan, then pause and wait for review and approval before proceeding.
 ```
