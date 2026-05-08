@@ -50,6 +50,8 @@ The hackathon is held at the [Swedish Exhibition & Congress Centre (Svenska Mäs
 
 Entrance 5 is closed, so enter via the Upper House Entrance further down Mässans gata, head up the stairs you see, then turn right and walk down the hallway to R17.
 
+WiFi: connect to `GothiaTowers` (free).
+
 ## Useful Links
 
 - [HL7 Sweden](https://hl7.se/)
