@@ -1,32 +1,30 @@
-# Terminology
-
 Track lead: Vadim Peretokin
 
-## Overview
+### Overview
 
 This track explores how applications can utilize the [Nordic FHIR terminology server](https://tx-nordics.fhir.org/fhir/r4/) (tx-nordics) for authoring FHIR content, and how AI agents can serve as terminology co-pilots - helping find codes, create mappings, and validate bindings.
 
 No prior experience with terminology servers or AI agents is required. The track is structured as a progression from guided exercises to open hacking, so you can join at whatever level suits you. Use of LLMs (ChatGPT, Claude, etc.) is welcomed and encouraged, but not necessary (for part 1).
 
-## Goals
+### Goals
 
 - Learn to use a FHIR terminology server for authoring: looking up codes, validating, expanding value sets, and translating between code systems
 - Experience AI agents as terminology co-pilots that connect to terminology servers
 - Produce concrete, reusable artifacts - ConceptMaps, ValueSets, or translated designations
 - Identify gaps in the Nordic TX server's code system coverage
 
-## Prerequisites
+### Prerequisites
 
 - A laptop with internet access
 - [Postman](https://www.postman.com/downloads/) client for part 1 (free)
 - An AI coding tool (e.g. [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview), [Cursor](https://www.cursor.com/), [GitHub Copilot](https://github.com/features/copilot)) - for the AI exercises. We'll help you set up if needed. This is needed for part 2 (requires a paid license)
 - No prior terminology server or AI agent experience required
 
-## Exercises
+### Exercises
 
 The exercises below are self-paced - start wherever you're comfortable and work through them at your own speed. The track lead will be walking around to help.
 
-### Part 1: TX server basics
+#### Part 1: TX server basics
 
 These exercises introduce the core FHIR terminology operations. You'll work directly with the [Nordic TX server](https://tx-nordics.fhir.org/fhir/r4/) using a REST client, browser, or curl.
 
@@ -163,7 +161,7 @@ These exercises introduce the core FHIR terminology operations. You'll work dire
 
 </details>
 
-### Part 1b: Authoring IGs with national terminology
+#### Part 1b: Authoring IGs with national terminology
 
 These exercises show how to use a national SNOMED CT edition when building a FHIR Implementation Guide. You'll write FSH, build the IG, and verify that the Nordic TX server was used automatically through the FHIR terminology ecosystem.
 
@@ -219,7 +217,7 @@ These exercises show how to use a national SNOMED CT edition when building a FHI
             where concept is-a #73211009 "Diabetes mellitus"
         ```
 
-### Part 2: AI Agents as terminology assistants
+#### Part 2: AI Agents as terminology assistants
 
 These exercises introduce AI agents that can query terminology servers. If you've never used an AI coding agent before, this is a gentle starting point.
 
@@ -243,7 +241,7 @@ These exercises introduce AI agents that can query terminology servers. If you'v
     | PROC-203 | Insertion of cardiac pacemaker |
 3. Compare AI vs TX server - For a set of codes, compare what the AI suggests as the display name vs what the TX server returns from `$lookup`. Where do they diverge? This is a practical lesson in why you should validate AI-generated terminology.
 
-### Part 3: Open hacking
+#### Part 3: Open hacking
 
 Bring your own problem, or pick from these:
 
@@ -259,7 +257,7 @@ Bring your own problem, or pick from these:
 - Autonomous codesystem mapping - Set up an AI agent on an autonomous loop to map a large codesystem (1000+ codes) to a standard terminology like SNOMED CT. The agent iterates through codes in batches, searches for matches, validates them against the TX server, and writes the results to a ConceptMap - all without manual intervention. This is a practical pattern for migrating legacy codesystems at scale
 - Validation pipeline - build a round-trip workflow where an AI proposes codes, the TX server validates them, and a human reviews the discrepancies
 
-## Expected outcomes
+### Expected outcomes
 
 - Participants understand how to use a FHIR terminology server for authoring (lookup, validate, expand, translate)
 - Participants have hands-on experience using AI agents to find and validate terminology
@@ -267,7 +265,11 @@ Bring your own problem, or pick from these:
 - Documentation of patterns for connecting AI agents to TX servers (prompts, tool configs, pitfalls)
 - Identified gaps in the Nordic TX server's code system coverage for Nordic countries
 
-## Resources
+### Actual outcomes
+
+- [nlk-test-ig](https://github.com/adamzkover/nlk-test-ig): a test IG with conversion of a national, NPU-based laboratory terminology (with non-FHIR API and data export) to FHIR
+
+### Resources
 
 - [Nordic FHIR Terminology Server](https://tx-nordics.fhir.org/fhir/r4/)
 - [FHIR Terminology Services specification](https://hl7.org/fhir/R4/terminology-service.html) - reference for all terminology operations
