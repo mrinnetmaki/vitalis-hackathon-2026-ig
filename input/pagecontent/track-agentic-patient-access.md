@@ -190,3 +190,19 @@ Before finishing the plan, surface:
 **Do not write implementation code yet.**
 Deliver the full analysis and plan, then pause and wait for review and approval before proceeding.
 ```
+
+## Results
+
+### Finland
+
+Mikael worked on Kanta implementation. Claude got pretty far with implementation. It was able to
+find many types of information and map those to correct FHIR resource types. It required some
+guidance to find the rest of the information. This seems to be due to the Kanta portal currently
+being split to two instances, a legacy and a new one, with most information being available only
+on one instance.
+
+Eventually Claude got derailed attempting to implement authentication properly.
+
+It may be worthwhile to try again, from a clean slate.
+
+The repo used in this exercise contains personal health information and is not shared publicly.
