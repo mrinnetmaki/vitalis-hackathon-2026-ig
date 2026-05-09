@@ -39,7 +39,7 @@ Also, due to the EHDS regulation, standardization efforts in Europe are now of c
 
   - Gazelle and the European Digital Test Environment (DTE) are available for hackathon 
     participants.
-  - See [the presentation](Xt-EHR_Testing_Hackathon_Vitalis.pptx) for instructions on how to get started!
+  - See [the presentation](Xt-EHR_Testing_Hackathon_Vitalis_20260508.pdf) for instructions on how to get started!
 
 ## Expected Outcomes
 
