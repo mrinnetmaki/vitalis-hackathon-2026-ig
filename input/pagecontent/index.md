@@ -2,18 +2,13 @@
 
 Welcome to the Vitalis Hackathon 2026 - a health data hackathon organized by [HL7 Sweden](https://hl7.se/), held at the **Vitalis venue, R17** in **Gothenburg, Sweden** on **May 8, 2026**.
 
-**[Sign up for the hackathon here!](https://forms.gle/VtHrSBQib1oaBeEC8)**
-
 See the [Vitalis Hackathon 2026 flyer (PDF)](Vitalis-Hackathon-2026.pdf) for a printable overview.
 
 This hackathon is part of the [Nordic Health Data Hackathons](https://fhir.fi/hackathon/) series.
 
 ## Tracks
 
-The [call for proposed tracks](https://chat.fhir.org/#narrow/channel/194447-nordics/topic/Swedish.20Health.20Data.20Hackathon.20-.20Call.20For.20Proposals/with/575779004) is out.
-Please send your own ideas!
-
-We currently have three proposed tracks:
+The hackathon includes three tracks:
 
 1. **[Agentic Patient Access](track-agentic-patient-access.html)** - Led by Jens Villadsen
 2. **[Terminology](track-terminology.html)** - Led by Vadim Peretokin
@@ -37,7 +32,7 @@ Bonus sessions running in parallel with hacking from 9:30 (15 minutes each):
 
 ## Preparation
 
-Two preparatory meetings will be held before the hackathon:
+Two preparatory meetings were held before the hackathon:
 
 - **Webinar 1 - April 15, 9-10am**: General introduction, track overview, and homework - [Join meeting](https://meet.google.com/mim-muhf-tvk) - [Recording](https://drive.google.com/file/d/1p19d8FE333ChPhYrkFXKfUDp6sCZLa8A/view?usp=sharing)
 - **Webinar 2 - April 22, 9-10am**: Q&A session and homework - [Join meeting](https://meet.google.com/edo-vtge-gee)
@@ -46,7 +41,7 @@ See the [Preparation](preparation.html) page for details.
 
 ## Getting There
 
-The hackathon is held at the [Swedish Exhibition & Congress Centre (Svenska Mässan)](https://en.vitalis.nu/plan-your-visit/find-us/), room R17 on Level 2, located at Mässans gata, Gothenburg. See the [Vitalis venue map (PDF)](https://vitalis.nu/uploads/sites/21/2026/03/Vitalis-2026_hallkarta.pdf) for details.
+The hackathon was held at the [Swedish Exhibition & Congress Centre (Svenska Mässan)](https://en.vitalis.nu/plan-your-visit/find-us/), room R17 on Level 2, located at Mässans gata, Gothenburg. See the [Vitalis venue map (PDF)](https://vitalis.nu/uploads/sites/21/2026/03/Vitalis-2026_hallkarta.pdf) for details.
 
 Entrance 5 is closed, so enter via the Upper House Entrance further down Mässans gata, head up the stairs you see, then turn right and walk down the hallway to R17.
 
