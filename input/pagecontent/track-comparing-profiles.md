@@ -39,7 +39,7 @@ Also, due to the EHDS regulation, standardization efforts in Europe are now of c
 
   - Gazelle and the European Digital Test Environment (DTE) are available for hackathon 
     participants.
-  - See [the presentation](Xt-EHR_Testing_Hackathon_Vitalis.pptx) for instructions on how to get started!
+  - See [the presentation](Xt-EHR_Testing_Hackathon_Vitalis_20260508.pdf) for instructions on how to get started!
 
 ## Expected Outcomes
 
@@ -57,3 +57,39 @@ Also, due to the EHDS regulation, standardization efforts in Europe are now of c
 - An example [multi-profile-validation](https://github.com/Sensotrend/
   multi-profile-validation) repo demonstrating how profiles can be compared
 - [EHDS Gazelle Test Bed](https://ehds.gazelle-platform.net/)
+
+## Results
+
+Participants discussed the problem and agreed that the problem of comparing profiles and evaluating
+whether they are compatible is foreseen to be a real issue and something the current FHIR tooling
+does not address properly.
+
+The group drew inspiration from Gino Canessa's
+[Cross-Version Extensions project](https://github.com/GinoCanessa/fhir-cross-version-source) (see 
+also the DevDays
+[presentation](https://www.devdays.com/wp-content/uploads/2025/06/250605_GinoCanessa_CrossVersionExtensions.pdf)
+and [video](https://www.youtube.com/watch?v=AFTnGTd-yWs)) for FHIR versions.
+
+### FHIR Schema Approach
+
+Aleksandr worked on an implementation based on
+[FHIR Schema](https://github.com/fhir-schema/fhir-schema) to compare profiles.
+
+Identifying "hard differences" like conflicting cardinalities or bindings is important and trivial
+with this kind of a tool. However, there 
+
+Aleksandr's implementation also includes Claude to provide AI-based analysis of the compatibility
+of profiles. It was surprisingly eye-opening.
+
+### Automated Creation of Example Instances
+
+Each FHIR implementation guide should have examples that demonstrate the use of profiles. However,
+it is rare that national base profile specifications have an extensive set of examples covering
+each constraint and extension.
+
+If we could get the implementation guides to include extensive example resources, we could validate
+those example resources against profiles from other implementation guides and thereby evaluate
+compatibility of the implementation guides.
+
+The participants made some attempts to create resource instances automatically from profile
+definitions. The work did not proceed to a demonstratable level.
