@@ -1,6 +1,6 @@
 This page consolidates the outcomes from all three tracks of the Vitalis Hackathon 2026. Each track's results are also available on its own page; this page is here to make it easy to read everything that came out of the day in one place.
 
-### Agentic Patient Access
+### Track 1: Agentic Patient Access
 
 (See the [Agentic Patient Access track](track-agentic-patient-access.html) for the full track description.)
 
@@ -32,7 +32,7 @@ It may be worthwhile to try again, from a clean slate.
 
 The repo used in this exercise contains personal health information and is not shared publicly.
 
-### Terminology
+### Track 2: Terminology
 
 (See the [Terminology track](track-terminology.html) for the full track description.)
 
@@ -81,7 +81,7 @@ Michael kicked off [fhir-syndication-ig](https://github.com/FHIR/fhir-syndicatio
 
 Vadim's day job at the hackathon was running the Terminology track itself, so the mapping work ran in the background on his laptop while he facilitated: a team of Claude agents chewed through 2000 SNOMED CT procedure codes during the day without him touching the keyboard for most of it. The full task is around 60,000 SNOMED CT procedure codes to the ~15,000 codes in [ICHI](https://www.who.int/standards/classifications/international-classification-of-health-interventions) (WHO's International Classification of Health Interventions), driven by a clinical-information problem: if no mapping exists, clinicians end up entering ICHI directly at the point of capture and lose the clinical-level detail SNOMED would have preserved. The setup is a `while true` shell loop running Claude agents in batches of 50, each emitting FHIR ConceptMap entries with source, relationship (narrower/wider/equivalent/related), target, and the agent's rationale - all going to a Google Sheet for human modellers to review before any production use.
 
-### Comparing National and EU FHIR Base Profiles
+### Track 3: Comparing National and EU FHIR Base Profiles
 
 (See the [Comparing Profiles track](track-comparing-profiles.html) for the full track description.)
 
