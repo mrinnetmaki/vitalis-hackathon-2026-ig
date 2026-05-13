@@ -22,7 +22,7 @@ Jens Kristian built [c3po-initiative/1177](https://github.com/c3po-initiative/11
 #### Mikael Rinnetmäki
 *[Sensotrend Oy](https://sensotrend.com), Finland*
 
-Mikael worked on a implementing the same access framework on OmaKanta, the patient portal of the Finnish national centralized health data registry.
+Mikael worked on a implementing the same access framework on [OmaKanta](https://www.kanta.fi/en/mykanta), the patient portal of the Finnish national centralized health data registry.
 
 Claude got pretty far with implementation. It was able to find many types of information and map those to correct FHIR resource types. It required some guidance to find the rest of the information. This seems to be due to the Kanta portal currently being split to two instances, a legacy and a new one, with most information being available only on one instance.
 
