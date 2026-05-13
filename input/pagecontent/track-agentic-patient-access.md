@@ -193,6 +193,14 @@ Deliver the full analysis and plan, then pause and wait for review and approval 
 
 ## Results
 
+### Sweden
+
+Christian Hilmersson registered late and decided to learn the track by doing it: he opened 1177 in the browser, grabbed an appointment-flow request from DevTools, sanitised it, and built a small local app that takes the raw 1177 JSON and converts it to FHIR. The interesting twist is that the model runs entirely on his own machine - a 4B-parameter Qwen model picked because it supports tool calling, where smaller open-weights models often don't. He then wrapped a UI around it with a chat panel, so once the data is converted you can ask things like "summarise my bookings" without scrolling through JSON. Two ingestion paths are supported (paste a pre-sanitised file, or pipe a fresh curl through the sanitiser script first).
+
+Rickard Ötvös took a different angle from inside Cambio: rather than scraping 1177, he pointed an AI coding agent at Cambio's existing REST APIs - the older system-to-system endpoints that already expose much of the same data - and used it to upgrade and translate the responses into a FHIR-like shape, reusing FHIR resources where they already aligned and filling the rest from the REST payloads. The output was generated fast but is not yet validated; the takeaway is that the same agent-driven facade pattern works equally well against a vendor's existing integration surface, not just patient portals.
+
+Jens Kristian Villadsen built [c3po-initiative/1177](https://github.com/c3po-initiative/1177), a read-only HAPI FHIR R4 proxy that fronts three Swedish 1177 services and exposes them as standard FHIR. The proxy authenticates against the Inera QA environment using HTTP Basic (personnummer + portal password), performs a SAML/Shibboleth login dance against the shared Inera IDP for each upstream SP, and joins the responses into a single FHIR API per authenticated patient. It maps `journalen` (journal records, HTML fragments inside JSON envelopes) to `DocumentReference`, `bokadetider` (appointment booking) to `Appointment`, and `e-tjanster` (patient inbox) to `Communication`/`DocumentReference`. The whole thing was assembled in under five hours of AI-assisted coding, and Jens Kristian's takeaway was that there are no technical limitations to building a FHIR facade for 1177 - it is entirely a governance question. The repo follows the pattern previously established for the Danish [Dhroxy](https://github.com/c3po-initiative/dhroxy) project.
+
 ### Finland
 
 Mikael worked on Kanta implementation. Claude got pretty far with implementation. It was able to

@@ -84,6 +84,8 @@ pages:
     title: "Track: Terminology"
   track-comparing-profiles.md:
     title: "Track: Comparing Profiles"
+  results.md:
+    title: Results
 
 menu:
   Home: index.html
@@ -91,6 +93,7 @@ menu:
   Agentic Patient Access: track-agentic-patient-access.html
   Terminology: track-terminology.html
   Comparing Profiles: track-comparing-profiles.html
+  Results: results.html
 
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │

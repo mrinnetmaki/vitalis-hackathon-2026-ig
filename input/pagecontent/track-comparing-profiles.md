@@ -72,14 +72,30 @@ and [video](https://www.youtube.com/watch?v=AFTnGTd-yWs)) for FHIR versions.
 
 ### FHIR Schema Approach
 
-Aleksandr worked on an implementation based on
+Aleksandr Kislitsyn worked on an [implementation](https://github.com/HealthSamurai/fhir-profile-diff) based on
 [FHIR Schema](https://github.com/fhir-schema/fhir-schema) to compare profiles.
 
 Identifying "hard differences" like conflicting cardinalities or bindings is important and trivial
 with this kind of a tool. However, there 
 
-Aleksandr's implementation also includes Claude to provide AI-based analysis of the compatibility
+Aleksandr Kislitsyn's implementation also includes Claude to provide AI-based analysis of the compatibility
 of profiles. It was surprisingly eye-opening.
+
+### StructureDefinition Merge Approach
+
+Pétur Þór Valdimarsson explored a different angle: take two implementation guides, compare them,
+and produce a third implementation guide that describes the compatibility between the first two.
+
+His prototype takes profile A and profile B, merges them with some post-processing, and uses
+extensions to describe similarities (and differences) in fields. The result is a normal
+implementation guide that can be built with the IG publisher, containing a "conflict profile"
+that summarises the relevant fields from either source and highlights where they break or where
+the profiling does something unnecessary (e.g. actively excluding an element that could just be
+left unsupported). The tool also drills into references - for example, checking whether the
+referenced organisation profiles are themselves compatible.
+
+The work is rough but promising; the next step is wiring up the IG theme to actually render the
+custom extensions so the compatibility annotations show up in the published output.
 
 ### Automated Creation of Example Instances
 
